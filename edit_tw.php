@@ -448,7 +448,7 @@
                 <!-- Illustrations -->
                 <div class="form-group; text-right">
                 <?php
-                  //$id_tw = $_GET['id_triwulan'];
+                  $id_tw = $_GET['id_triwulan'];
                 ?>
                   <a href="tw.php?id_triwulan=<?php echo $id_tw;?>" class="btn btn-sm btn-danger" name="cancel" type="cancel"></i>Cancel</a>
                 </div>
