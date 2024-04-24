@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 29 Mar 2024 pada 09.53
+-- Waktu pembuatan: 24 Apr 2024 pada 06.03
 -- Versi server: 10.4.14-MariaDB
 -- Versi PHP: 7.2.34
 
@@ -43,14 +43,20 @@ CREATE TABLE `capaian` (
   `id_capaian` int(11) NOT NULL,
   `id_triwulan` int(11) NOT NULL,
   `id_iku` int(11) NOT NULL,
-  `id_ket` int(11) NOT NULL,
-  `sasaran` varchar(255) NOT NULL,
-  `indikator` varchar(255) NOT NULL,
+  `tanggal` date NOT NULL,
   `satuan` varchar(255) NOT NULL,
-  `target_kinerja` varchar(255) NOT NULL,
   `target_renaksi_tw` varchar(255) NOT NULL,
   `capaian_tw` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `capaian`
+--
+
+INSERT INTO `capaian` (`id_capaian`, `id_triwulan`, `id_iku`, `tanggal`, `satuan`, `target_renaksi_tw`, `capaian_tw`) VALUES
+(1, 1, 1, '0000-00-00', '%', '20', '30'),
+(2, 2, 1, '0000-00-00', '%', '25', '35'),
+(10, 1, 1, '0000-00-00', '7', '11', '12');
 
 -- --------------------------------------------------------
 
@@ -61,6 +67,7 @@ CREATE TABLE `capaian` (
 CREATE TABLE `iku` (
   `id_iku` int(10) NOT NULL,
   `sasaran` varchar(255) NOT NULL,
+  `no_iku` varchar(225) NOT NULL,
   `indikator` varchar(255) NOT NULL,
   `target_kinerja` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -69,15 +76,15 @@ CREATE TABLE `iku` (
 -- Dumping data untuk tabel `iku`
 --
 
-INSERT INTO `iku` (`id_iku`, `sasaran`, `indikator`, `target_kinerja`) VALUES
-(1, '[1.0] Meningkatnya kualitas lulusan\r\npendidikan tinggi\r\n', '[1.1] Persentase lulusan S1 dan\r\nD4/D3/D2/D1 yang berhasil memiliki\r\npekerjaan; melanjutkan studi; atau menjadi\r\nwiraswasta\r\n', '65.20'),
-(2, '[1.0] Meningkatnya kualitas lulusan pendidikan tinggi', '[1.2] Persentase mahasiswa S1 dan D4/D3/D2/D1 yang menjalankan kegiatan pembelajaran di luar program studi; atau meraih prestasi', '30'),
-(3, '[2.0] Meningkatnya kualitas dosen pendidikan tinggi', '[2.1] Persentase dosen yang berkegiatan tridharma di perguruan tinggi lain, bekerja sebagai praktisi di dunia industri, atau membimbing mahasiswa berkegiatan di luar program studi', '30'),
-(5, '[2.0] Meningkatnya kualitas dosen pendidikan tinggi', '[2.2] Persentase dosen yang memiliki sertifikat kompetensi/profesi yang diakui oleh dunia usaha dan dunia industri atau persentase pengajar yang berasal dari kalangan praktisi profesional, dunia usaha, atau dunia industri', '50'),
-(6, '[2.0] Meningkatnya kualitas dosen pendidikan tinggi', '[2.3] Jumlah keluaran dosen yang berhasil mendapatkan rekognisi internasional atau diterapkan oleh masyarakat/industri/pemerintah per jumlah dosen', '100'),
-(7, '[3.0] Meningkatnya kualitas kurikulum dan pembelajaran', '[3.1] Jumlah kerjasama per program studi S1 dan D4/D3/D2/D1', '100'),
-(8, '[3.0] Meningkatnya kualitas kurikulum dan pembelajaran', '[3.2] Persentase mata kuliah S1 dan D4/D3/D2/D1 yang menggunakan metode pembelajaran pemecahan kasus (case method) atau pembelajaran kelompok berbasis project (team-based project) sebagai bagian dari bobot evaluasi', '40'),
-(9, '[3.0] Meningkatnya kualitas kurikulum dan pembelajaran', '[3.3] Persentase program studi S1 dan D4/D3 yang memiliki akreditasi atau sertifikasi internasional yang diakui pemerintah', '2.50');
+INSERT INTO `iku` (`id_iku`, `sasaran`, `no_iku`, `indikator`, `target_kinerja`) VALUES
+(1, '[1.0] Meningkatnya kualitas lulusanpendidikan tinggi', '[1.1] ', 'Persentase lulusan S1 danD4/D3/D2/D1 yang berhasil memilikipekerjaan; melanjutkan studi; atau menjadiwiraswasta', '65.20'),
+(2, '[1.0] Meningkatnya kualitas lulusan pendidikan tinggi', '[1.2] ', 'Persentase mahasiswa S1 dan D4/D3/D2/D1 yang menjalankan kegiatan pembelajaran di luar program studi; atau meraih prestasi', '30'),
+(3, '[2.0] Meningkatnya kualitas dosen pendidikan tinggi', '[2.1] ', 'Persentase dosen yang berkegiatan tridharma di perguruan tinggi lain, bekerja sebagai praktisi di dunia industri, atau membimbing mahasiswa berkegiatan di luar program studi', '30'),
+(5, '[2.0] Meningkatnya kualitas dosen pendidikan tinggi', '[2.2] ', 'Persentase dosen yang memiliki sertifikat kompetensi/profesi yang diakui oleh dunia usaha dan dunia industri atau persentase pengajar yang berasal dari kalangan praktisi profesional, dunia usaha, atau dunia industri', '50'),
+(6, '[2.0] Meningkatnya kualitas dosen pendidikan tinggi', '[2.3] ', 'Jumlah keluaran dosen yang berhasil mendapatkan rekognisi internasional atau diterapkan oleh masyarakat/industri/pemerintah per jumlah dosen', '100'),
+(7, '[3.0] Meningkatnya kualitas kurikulum dan pembelajaran', '[3.1]', ' Jumlah kerjasama per program studi S1 dan D4/D3/D2/D1', '100'),
+(8, '[3.0] Meningkatnya kualitas kurikulum dan pembelajaran', '[3.2] ', 'Persentase mata kuliah S1 dan D4/D3/D2/D1 yang menggunakan metode pembelajaran pemecahan kasus (case method) atau pembelajaran kelompok berbasis project (team-based project) sebagai bagian dari bobot evaluasi', '40'),
+(9, '[3.0] Meningkatnya kualitas kurikulum dan pembelajaran', '[3.3] ', 'Persentase program studi S1 dan D4/D3 yang memiliki akreditasi atau sertifikasi internasional yang diakui pemerintah', '2.50');
 
 -- --------------------------------------------------------
 
@@ -96,9 +103,8 @@ CREATE TABLE `jurusan` (
 
 INSERT INTO `jurusan` (`id_jurusan`, `nama_jurusan`) VALUES
 (1, 'Manajemen Informatika'),
-(3, 'Agribisnis'),
-(4, 'Teknik Mesin'),
-(19, 'ee');
+(2, 'Agribisnis'),
+(3, 'Teknik Mesin');
 
 -- --------------------------------------------------------
 
@@ -126,6 +132,15 @@ CREATE TABLE `prodi` (
   `nama_prodi` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data untuk tabel `prodi`
+--
+
+INSERT INTO `prodi` (`id_prodi`, `id_jurusan`, `nama_prodi`) VALUES
+(8, 1, 'Manajemen informatika\r\n'),
+(9, 1, 'Teknik Multimedia'),
+(22, 1, 'Akuntansi Keuangan Perusahaan');
+
 -- --------------------------------------------------------
 
 --
@@ -142,7 +157,9 @@ CREATE TABLE `triwulan` (
 --
 
 INSERT INTO `triwulan` (`id_triwulan`, `nama_triwulan`) VALUES
-(1, 'Triwulan 1');
+(1, 'Triwulan 1'),
+(2, 'Triwulan 2'),
+(5, 'Triwulan 33');
 
 -- --------------------------------------------------------
 
@@ -173,8 +190,7 @@ ALTER TABLE `admin`
 ALTER TABLE `capaian`
   ADD PRIMARY KEY (`id_capaian`),
   ADD KEY `id_triwulan` (`id_triwulan`),
-  ADD KEY `id_iku` (`id_iku`),
-  ADD KEY `id_ket` (`id_ket`);
+  ADD KEY `id_iku` (`id_iku`);
 
 --
 -- Indeks untuk tabel `iku`
@@ -228,19 +244,19 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT untuk tabel `capaian`
 --
 ALTER TABLE `capaian`
-  MODIFY `id_capaian` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_capaian` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT untuk tabel `iku`
 --
 ALTER TABLE `iku`
-  MODIFY `id_iku` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id_iku` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT untuk tabel `jurusan`
 --
 ALTER TABLE `jurusan`
-  MODIFY `id_jurusan` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id_jurusan` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT untuk tabel `keterangan`
@@ -252,13 +268,13 @@ ALTER TABLE `keterangan`
 -- AUTO_INCREMENT untuk tabel `prodi`
 --
 ALTER TABLE `prodi`
-  MODIFY `id_prodi` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_prodi` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT untuk tabel `triwulan`
 --
 ALTER TABLE `triwulan`
-  MODIFY `id_triwulan` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_triwulan` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT untuk tabel `user`
@@ -275,7 +291,6 @@ ALTER TABLE `user`
 --
 ALTER TABLE `capaian`
   ADD CONSTRAINT `capaian_ibfk_1` FOREIGN KEY (`id_iku`) REFERENCES `iku` (`id_iku`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `capaian_ibfk_2` FOREIGN KEY (`id_ket`) REFERENCES `keterangan` (`id_ket`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `capaian_ibfk_3` FOREIGN KEY (`id_triwulan`) REFERENCES `triwulan` (`id_triwulan`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
@@ -288,7 +303,7 @@ ALTER TABLE `keterangan`
 -- Ketidakleluasaan untuk tabel `prodi`
 --
 ALTER TABLE `prodi`
-  ADD CONSTRAINT `prodi_ibfk_1` FOREIGN KEY (`id_jurusan`) REFERENCES `jurusan` (`id_jurusan`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `qwer` FOREIGN KEY (`id_jurusan`) REFERENCES `jurusan` (`id_jurusan`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
